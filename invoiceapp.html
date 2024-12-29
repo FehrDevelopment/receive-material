@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick Receive</title>
+    <link rel="stylesheet" href="style.css">
+    <widget id="html.invoiceapp" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+        <name>InvoiceApp</name>
+        <description>Shaun's Invoice App</description>
+        <author email="terence.fehr@gmail.com" href="http://gmail.com">Terence Fehr</author>
+        <content src="index.html" />
+        <access origin="*" />
+        <preference name="Orientation" value="portrait" />
+        <preference name="Fullscreen" value="true" />
+    </widget>
+    
+</head>
+<body>
+    
+    <div class="container">
+        <h1 class="header">Quick Receive</h1>
+        <!-- Order Search Section -->
+        <div class="order-search">
+            <input type="text" id="uniqueId" class="input" placeholder="Enter Unique ID# (try: 84859-012395)">
+            <button id="searchButton" class="button">Search</button>
+        </div>
+        <p id="errorMesssage" class="error-message hidden"></p>
+
+        <!-- Order Information Section -->
+        <div id="orderInfoSection" class="hidden">
+            <table class="order-info-table">
+                <tr>
+                    <td>Customer Number</td>
+                    <td><input type="text" id="customerNumber" class="input" placeholder="Enter customer number"></td>
+                </tr>
+                <tr>
+                    <td>Order Date</td>
+                    <td><input type="text" id="orderDate" class="input" placeholder="Enter order date"></td>
+                </tr>
+                <tr>
+                    <td>PO #</td>
+                    <td><input type="text" id="poNumber" class="input" placeholder="Enter PO#"></td>
+                </tr>
+                <tr>
+                    <td>Supplier</td>
+                    <td><input type="text" id="supplier" class="input" placeholder="Enter supplier name"></td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Materials Table -->
+        <div id="materialsTableSection" class="hidden">
+            <table class="materials-table">
+                <thead>
+                    <tr>
+                        <th>Line</th>
+                        <th>Qty Ordered</th>
+                        <th>UOM</th>
+                        <th>Description</th>
+                        <th>Catalog #</th>
+                        <th>Status</th>
+                        <th>Qty Received</th>
+                        <th>Comments</th>
+                    </tr>
+                </thead>
+                <tbody id="materialsTable">
+                    <!-- Sample Row -->
+                    <tr>
+                        <td>1</td>
+                        <td>30</td>
+                        <td>M</td>
+                        <td>600mm cable tray</td>
+                        <td>XX-600</td>
+                        <td></td>
+                        <td>
+                            <input type="number" class="input" value="0" min="0" max="30">
+                        </td>
+                        <td>
+                            <input type="text" class="input" placeholder="Add comment...">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Packing Slip Photo Capture -->
+        <div id="photoCaptureSection" class="hidden">
+            <input type="file" id="fileInput" class="hidden" accept="image/*" capture="environment">
+            <button id="capturePhotoButton" class="button-outline">
+                Capture Packing Slip
+            </button>
+            <img id="packingSlipPhoto" src="" alt="Packing Slip" class="hidden photo-preview">
+        </div>
+
+        <!-- Action Buttons -->
+        <div id="actionButtons" class="hidden">
+            <button id="receiveAllButton" class="button-outline">Receive All</button>
+            <button id="submitButton" class="button" disabled>
+                Send to Purchaser
+            </button>
+        </div>
+
+        <!-- Confirmation Page -->
+        <div id="confirmationPage" class="hidden">
+            <h2>Submission Confirmation</h2>
+            <p>Packing slip for PO #012395 has been sent to the purchaser.</p>
+            <img id="submittedPackingSlipPhoto" src="" alt="Submitted Packing Slip" class="photo-preview">
+            <button id="backToSearchButton" class="button">Back to Search</button>
+        </div>
+    </div>
+    <!-- Existing HTML content here -->
+    
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/service-worker.js')
+                .then(registration => {
+                    console.log('Service Worker registered with scope:', registration.scope);
+                }).catch(error => {
+                    console.error('Service Worker registration failed:', error);
+                });
+        }
+    </script>
+    <script src="invoiceapp.js"></script>
+</body>
+</html>
+
+

@@ -1,0 +1,77 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.header {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.input, .button, .button-outline {
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.input {
+    width: calc(100% - 20px);
+    border: 1px solid #ccc;
+}
+
+.button, .button-outline {
+    cursor: pointer;
+}
+
+.button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+}
+
+.button-outline {
+    background-color: white;
+    border: 2px solid #007BFF;
+    color: #007BFF;
+}
+
+.order-info-table, .materials-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.order-info-table td, .materials-table th, .materials-table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+}
+
+.materials-table th {
+    background-color: #f1f1f1;
+}
+
+.photo-preview {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+.error-message {
+    display: none;
+    color: red;
+}
+
+
